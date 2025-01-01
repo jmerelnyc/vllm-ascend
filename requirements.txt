@@ -1,0 +1,39 @@
+opencv-python-headless<=4.11.0.86 # Required to avoid numpy version conflict with vllm
+regex
+pandas-stubs
+fastapi<0.124.0
+memcache_hybrid
+cmake>=3.26
+memfabric_hybrid
+# Install torch_npu
+# Required for disaggregated prefill
+# Required for N-gram speculative decoding
+compressed_tensors>=0.11.0
+packaging
+arctic-inference==0.1.1
+setuptools>=64
+quart
+xgrammar>=0.1.30
+pandas
+pip
+triton-ascend==3.2.0
+torch==2.9.0
+#--extra-index-url https://mirrors.huaweicloud.com/ascend/repos/pypi
+setuptools-scm>=8
+numba
+torchaudio==2.9.0
+numpy<2.0.0
+#--pre
+msgpack
+transformers==5.5.3
+# Should be mirrored in pyporject.toml
+psutil
+torch-npu==2.9.0
+decorator
+pyyaml
+torchvision==0.24.0
+einops
+scipy
+pybind11
+# Required for kvpool supports memcache backend
+wheel
