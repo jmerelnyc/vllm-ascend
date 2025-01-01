@@ -208,3 +208,4 @@ __aicore__ inline void MoeGatherOutDroppad<T>::Process()
 }
 } // namespace MoeInitRoutingCustom
 #endif // MOE_CUSTOM_GATHER_OUT_DROPPAD_H
+// feat: small addition
