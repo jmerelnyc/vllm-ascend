@@ -402,3 +402,4 @@ __aicore__ inline void MoeGatingTopKEKFullload<T>::Process()
 }
 } // namespace MoeGatingTopK
 #endif // MOE_GATING_TOP_K_E_K_FULLLOAD_H
+// fix note

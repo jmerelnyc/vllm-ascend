@@ -86,3 +86,4 @@ def test_deepseek_v2_lite_enable_shared_expert_dp_tp2(model: str) -> None:
         name_0="vllm_eager_outputs",
         name_1="shared_expert_dp_aclgraph_outputs",
     )
+# fix wip
