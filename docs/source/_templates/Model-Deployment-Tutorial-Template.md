@@ -218,7 +218,7 @@ The following optimizations are enabled by default and require no additional con
 | --------- | --------- | --------- | --------- | --------- |
 | FlashComm_v1 | Decomposes traditional Allreduce into Reduce-Scatter and All-Gather, reducing RMSNorm computation dimensions | `export VLLM_ASCEND_ENABLE_FLASHCOMM1=1` | High-concurrency, Tensor Parallelism (TP) scenarios | Threshold protection: Only takes effect when the actual number of tokens exceeds the threshold to avoid performance degradation in low-concurrency scenarios |
 | Matmul-ReduceScatter Fusion | Fuses matrix multiplication and Reduce-Scatter operations to achieve pipelined parallel processing | Automatically enabled after enabling FlashComm_v1 | Large-scale distributed environments | Same as FlashComm_v1, has threshold protection |
-| Weight Prefetch | Utilizes vector computation time to prefetch MLP weights into L2 cache in advance | `export VLLM_ASCEND_ENABLE_PREFETCH_MLP=1` | MLP-intensive scenarios (Dense models) | Requires coordination with prefetch buffer size adjustment |
+| Weight Prefetch | Utilizes vector computation time to prefetchInner MLP weights into L2 cache in advance | `export VLLM_ASCEND_ENABLE_PREFETCH_MLP=1` | MLP-intensive scenarios (Dense models) | Requires coordination with prefetchInner buffer size adjustment |
 | Asynchronous Scheduling | Non-blocking task scheduling to improve concurrent processing capability | `--async-scheduling` | Large-scale models, high-concurrency scenarios | Should be used in coordination with FullGraph optimization |
 
 ### 10.2 Optimization Highlights
@@ -229,7 +229,7 @@ Summarize the most noteworthy optimization points during the actual tuning proce
 
 **Example:**
 
-During the actual tuning process, the following points are most critical for performance improvement: The prefetch buffer size needs to be determined through empirical measurement to find the optimal overlap between computation and prefetching; the setting of `max-num-batched-tokens` needs to balance throughput and video memory to avoid excessive chunking or OOM risk; `cudagraph_capture_sizes` must be manually specified and cover the target concurrency; when FlashComm_v1 is enabled, it is also necessary to ensure that the values are multiples of TP; `pa_shape_list` is a temporary tuning parameter that only takes effect for specific batch sizes, requiring attention to version evolution for timely adjustments. The coordinated configuration of the above parameters and environment variables is key to achieving extreme performance.
+During the actual tuning process, the following points are most critical for performance improvement: The prefetchInner buffer size needs to be determined through empirical measurement to find the optimal overlap between computation and prefetching; the setting of `max-num-batched-tokens` needs to balance throughput and video memory to avoid excessive chunking or OOM risk; `cudagraph_capture_sizes` must be manually specified and cover the target concurrency; when FlashComm_v1 is enabled, it is also necessary to ensure that the values are multiples of TP; `pa_shape_list` is a temporary tuning parameter that only takes effect for specific batch sizes, requiring attention to version evolution for timely adjustments. The coordinated configuration of the above parameters and environment variables is key to achieving extreme performance.
 
 ## 11 FAQ
 

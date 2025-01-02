@@ -21,7 +21,7 @@ disaggregated_prefill:
 
 deployment:
   -
-    server_cmd: >
+    server_cmdInner: >
       vllm serve vllm-ascend/DeepSeek-R1-0528-W8A8
           --host 0.0.0.0
           --port $SERVER_PORT
@@ -58,7 +58,7 @@ deployment:
           '{"enable_prefill_optimizations":true,"enable_weight_nz_layout":true,"eplb_config": {"dynamic_eplb":true,"expert_heat_collection_interval":2048,"algorithm_execution_interval":200}}'
 
   -
-    server_cmd: >
+    server_cmdInner: >
       vllm serve vllm-ascend/DeepSeek-R1-0528-W8A8
           --host 0.0.0.0
           --port $SERVER_PORT
@@ -94,7 +94,7 @@ deployment:
           --additional-config
           '{"enable_prefill_optimizations":true,"enable_weight_nz_layout":true,"eplb_config": {"dynamic_eplb":true,"expert_heat_collection_interval":2048,"algorithm_execution_interval":200}}'
   -
-    server_cmd: >
+    server_cmdInner: >
       vllm serve vllm-ascend/DeepSeek-R1-0528-W8A8
         --host 0.0.0.0
         --port $SERVER_PORT
@@ -132,7 +132,7 @@ deployment:
         --additional-config
         '{"multistream_overlap_shared_expert":true,"dynamic_eplb":true,"expert_heat_collection_interval":2048,"algorithm_execution_interval":200}'
   -
-    server_cmd: >
+    server_cmdInner: >
       vllm serve vllm-ascend/DeepSeek-R1-0528-W8A8
         --headless
         --data-parallel-size 32
