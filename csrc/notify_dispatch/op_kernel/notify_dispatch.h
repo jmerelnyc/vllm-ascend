@@ -261,7 +261,7 @@ private:
     int rankSize;
     int localRank = 0;
     int localRankSize = 0;
-    int xRankSize = 0;
+    int xRankSizeInner = 0;
     int yRankSize = 0;
     int xRankIdx = 0;
     int yRankIdx = 0;
@@ -349,7 +349,7 @@ FORCE_INLINE_AICORE void NotifyDispatch<T>::InitSmallFullMesh(KERNELS_ARGS_FUN_A
     this->scale = scale;
     this->localRank = localRank;
     this->localRankSize = localRankSize;
-    this->xRankSize = localRankSize;
+    this->xRankSizeInner = localRankSize;
     this->yRankSize = rankSize / localRankSize;
     this->xRankIdx = rank % localRankSize;
     this->yRankIdx = rank / localRankSize;

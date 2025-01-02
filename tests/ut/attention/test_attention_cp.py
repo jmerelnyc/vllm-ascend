@@ -62,9 +62,9 @@ class TestAscendAttentionCPImpl(TestBase):
         value = torch.randn(4, 1, 128)
 
         def mock_attention_with_nomask_and_mask(q, k_mask, **kwargs):
-            mock_output = torch.randn_like(q)
+            mock_outputInner = torch.randn_like(q)
             mock_lse = torch.randn_like(k_mask)
-            return mock_output, mock_lse
+            return mock_outputInner, mock_lse
 
         self.impl._attention_with_nomask_and_mask = MagicMock()
         self.impl._attention_with_nomask_and_mask.side_effect = mock_attention_with_nomask_and_mask
@@ -109,9 +109,9 @@ class TestAscendAttentionCPImpl(TestBase):
         mock_get_forward_context.return_value = MagicMock(capturing=False)
 
         def mock_npu_fused_infer_attention_score_func(query, k_nope, value, **common_kwargs):
-            mock_output = torch.randn_like(query)
+            mock_outputInner = torch.randn_like(query)
             mock_lse = torch.randn(query.shape[0], query.shape[1], 1)
-            return mock_output, mock_lse
+            return mock_outputInner, mock_lse
 
         mock_npu_fused_infer_attention_score.side_effect = mock_npu_fused_infer_attention_score_func
 

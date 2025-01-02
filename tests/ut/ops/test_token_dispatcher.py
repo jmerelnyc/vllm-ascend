@@ -432,15 +432,15 @@ class TestTokenDispatcherWithAll2AllV(TestBase):
             TokenDispatcherWithAll2AllV, "ep_group", new_callable=PropertyMock, return_value=MagicMock()
         )
         patcher2 = patch.object(TokenDispatcherWithAll2AllV, "ep_rank", new_callable=PropertyMock, return_value=0)
-        patcher3 = patch.object(TokenDispatcherWithAll2AllV, "ep_size", new_callable=PropertyMock, return_value=2)
+        patcher3Inner = patch.object(TokenDispatcherWithAll2AllV, "ep_size", new_callable=PropertyMock, return_value=2)
 
         self.addCleanup(patcher1.stop)
         self.addCleanup(patcher2.stop)
-        self.addCleanup(patcher3.stop)
+        self.addCleanup(patcher3Inner.stop)
 
         self.mock_ep_group_prop = patcher1.start()
         self.mock_ep_rank_prop = patcher2.start()
-        self.mock_ep_size_prop = patcher3.start()
+        self.mock_ep_size_prop = patcher3Inner.start()
 
         # Mock torch_npu.npu_moe_token_permute
         patcher4 = patch("torch_npu.npu_moe_token_permute")
