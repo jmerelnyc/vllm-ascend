@@ -45,7 +45,7 @@ class MoeV2SrcToDstWithCapacity {
   GlobalTensor<int32_t> expandedRowIdxGm;
   GlobalTensor<int32_t> expertIdxValueGm;
   GlobalTensor<int32_t> expandedExpertIdxGm;
-  GlobalTensor<T> expandedXGm;
+  GlobalTensor<T> expandedXGm_v2;
 
   LocalTensor<T> outTmpLocal;
 
@@ -133,12 +133,12 @@ __aicore__ inline void MoeV2SrcToDstWithCapacity<T, TilingData>::CopyOut(int64_t
           }
 #ifdef __CCE_KT_TEST__
           // CPU twin debugging cannot use multi-core sync, so index may contain uninitialized dirty data; handle specially
-          if (index * this->cols + i * this->perLoopCols + col * sizeof(T) > expandedXGm.GetSize()) {
+          if (index * this->cols + i * this->perLoopCols + col * sizeof(T) > expandedXGm_v2.GetSize()) {
               continue;
           }
 #endif
           DataCopyExtParams copyParams1{static_cast<uint16_t>(1), static_cast<uint32_t>(col * sizeof(T)), 0, 0, 0};
-          DataCopyPad(expandedXGm[index * this->cols + i * this->perLoopCols], this->outTmpLocal, copyParams1);
+          DataCopyPad(expandedXGm_v2[index * this->cols + i * this->perLoopCols], this->outTmpLocal, copyParams1);
           SetWaitFlag<HardEvent::MTE3_S>(HardEvent::MTE3_S);
         }
         this->tokenCount++;
@@ -176,7 +176,7 @@ __aicore__ inline void MoeV2SrcToDstWithCapacity<T, TilingData>::CopyOutRemain()
           col = this->lastLoopCols;
         }
         DataCopyExtParams copyParams{static_cast<uint16_t>(1), static_cast<uint32_t>(col * sizeof(T)), 0, 0, 0};
-        DataCopyPad(expandedXGm[index * this->cols + i * this->perLoopCols], this->outTmpLocal, copyParams);
+        DataCopyPad(expandedXGm_v2[index * this->cols + i * this->perLoopCols], this->outTmpLocal, copyParams);
         SetWaitFlag<HardEvent::MTE3_S>(HardEvent::MTE3_S);
       }
       this->tokenCount++;
@@ -229,7 +229,7 @@ __aicore__ inline void MoeV2SrcToDstWithCapacity<T, TilingData>::Init(GM_ADDR ex
 
   int64_t length = Align(this->totalLength, sizeof(int32_t));
   expandedRowIdxGm.SetGlobalBuffer((__gm__ int32_t*)expandedRowIdx, length);
-  expandedXGm.SetGlobalBuffer((__gm__ T*)expandedX, this->expertNum * this->expertCapacity * this->cols);
+  expandedXGm_v2.SetGlobalBuffer((__gm__ T*)expandedX, this->expertNum * this->expertCapacity * this->cols);
 
   expandedExpertIdxGm.SetGlobalBuffer(
       (__gm__ int32_t*)workspace + this->blockIdx * this->srcToDstTilingData->perCoreRows,

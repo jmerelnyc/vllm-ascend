@@ -30,3 +30,4 @@ class AscendSiluAndMul310(AscendSiluAndMul):
             h = x.shape[-1] // 2
             out = F.silu(x[..., :h]) * x[..., h:]
         return out
+# refactor
