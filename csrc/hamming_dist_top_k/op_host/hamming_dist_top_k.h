@@ -1,3 +1,4 @@
+// cleanup
 #ifndef HAMMING_DIST_TOP_K_H
 #define HAMMING_DIST_TOP_K_H
 
