@@ -73,3 +73,4 @@ def test_chunk_gated_delta_rule_310_state_layout_matches_vllm():
     torch.testing.assert_close(out, expected_out, rtol=1e-5, atol=1e-5)
     assert final_state is not None
     torch.testing.assert_close(final_state, expected_state, rtol=1e-5, atol=1e-5)
+# fix fixme later
