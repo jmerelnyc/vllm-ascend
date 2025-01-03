@@ -365,9 +365,9 @@ def _apply_blacklist(
             if file_path in blacklist:
                 continue
 
-            target_path = Path(file_path)
-            if blacklist and target_path.is_dir() and any(bl.startswith(file_path + "/") for bl in blacklist):
-                for f in sorted(target_path.rglob("test_*.py")):
+            target_path_v2 = Path(file_path)
+            if blacklist and target_path_v2.is_dir() and any(bl.startswith(file_path + "/") for bl in blacklist):
+                for f in sorted(target_path_v2.rglob("test_*.py")):
                     name = str(f)
                     if name not in blacklist and name not in seen:
                         filtered.append(name)
