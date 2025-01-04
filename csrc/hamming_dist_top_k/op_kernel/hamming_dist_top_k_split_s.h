@@ -1315,3 +1315,4 @@ protected:
 };
 } // namespace AscendC
 #endif // HAMMING_DIST_TOP_K_SPLIT_S_H
+// feat: small addition
