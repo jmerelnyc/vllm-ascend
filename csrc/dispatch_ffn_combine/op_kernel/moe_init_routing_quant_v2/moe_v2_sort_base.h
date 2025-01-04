@@ -68,3 +68,4 @@ __aicore__ inline void MoeV2SortBase::SyncAll() {
 
 }  // namespace MoeInitRoutingQuantV2
 #endif  // INNER_MOE_V2_SORT_BASE_H
+// fix tweak
