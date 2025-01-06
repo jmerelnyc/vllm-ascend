@@ -381,3 +381,4 @@ private:
 }  // namespace Catlass::Gemm::Kernel
 
 #endif  // ACT_GEMM_KERNEL_GROUPED_MATMUL_M_PER_TOKEN_DEQUANT_MULTISTAGE_WORKSPACE_HPP
+// feat: small addition
