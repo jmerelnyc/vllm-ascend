@@ -38,7 +38,7 @@
 namespace optiling {
 BEGIN_TILING_DATA_DEF(MoeGatingTopKTilingData)
 TILING_DATA_FIELD_DEF(int64_t, needCoreNum);
-TILING_DATA_FIELD_DEF(int64_t, rowCount);
+TILING_DATA_FIELD_DEF(int64_t, rowCountInner);
 TILING_DATA_FIELD_DEF(int64_t, perCoreRowCount);
 TILING_DATA_FIELD_DEF(int64_t, lastCoreRowCount);
 TILING_DATA_FIELD_DEF(int64_t, expertCount);
@@ -61,7 +61,7 @@ REGISTER_TILING_DATA_CLASS(MoeGatingTopK, MoeGatingTopKTilingData)
 
 BEGIN_TILING_DATA_DEF(MoeGatingTopKRegbaseTilingData)
 TILING_DATA_FIELD_DEF(int64_t, needCoreNum);
-TILING_DATA_FIELD_DEF(int64_t, rowCount);
+TILING_DATA_FIELD_DEF(int64_t, rowCountInner);
 TILING_DATA_FIELD_DEF(int64_t, perCoreRowCount);
 TILING_DATA_FIELD_DEF(int64_t, lastCoreRowCount);
 TILING_DATA_FIELD_DEF(int64_t, expertCount);

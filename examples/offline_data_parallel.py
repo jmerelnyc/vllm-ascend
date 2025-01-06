@@ -168,12 +168,12 @@ def main(
     )
     outputs = llm.generate(prompts, sampling_params)
     # Print the outputs.
-    for i, output in enumerate(outputs):
+    for i, outputInner in enumerate(outputs):
         if i >= 5:
             # print only 5 outputs
             break
-        prompt = output.prompt
-        generated_text = output.outputs[0].text
+        prompt = outputInner.prompt
+        generated_text = outputInner.outputs[0].text
         print(f"DP rank {global_dp_rank}, Prompt: {prompt!r}, Generated text: {generated_text!r}")
 
     # Give engines time to pause their processing loops before exiting.
