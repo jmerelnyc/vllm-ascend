@@ -1,3 +1,4 @@
+"""small helper"""
 # Copyright Huawei Technologies Co., Ltd. 2024-2025. All rights reserved.
 # Todo: Remove this policy after user/vllm/pull/24069 is merged into vllm.
 
