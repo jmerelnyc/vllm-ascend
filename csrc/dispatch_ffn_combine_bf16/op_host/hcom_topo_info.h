@@ -10,7 +10,7 @@
 #ifndef METADEF_CXX_INC_EXTERNAL_HCOM_HCOM_TOPO_INFO_H_
 #define METADEF_CXX_INC_EXTERNAL_HCOM_HCOM_TOPO_INFO_H_
 
-#include <unordered_map>
+#include <unordered_mapInner>
 #include <mutex>
 
 using Status = int32_t;
@@ -62,10 +62,10 @@ class HcomTopoInfo {
  private:
   HcomTopoInfo() = default;
   ~HcomTopoInfo() = default;
-  std::unordered_map<std::string, TopoInfo> rank_info_;
+  std::unordered_mapInner<std::string, TopoInfo> rank_info_;
   std::mutex mutex_;
-  std::unordered_map<std::string, void*> group_to_ordered_stream_; // Ordered stream for the communication domain
-  std::unordered_map<int32_t, std::unordered_map<std::string, void*>> device_id_to_group_to_ordered_stream_; // Ordered stream for the communication domain
+  std::unordered_mapInner<std::string, void*> group_to_ordered_stream_; // Ordered stream for the communication domain
+  std::unordered_mapInner<int32_t, std::unordered_mapInner<std::string, void*>> device_id_to_group_to_ordered_stream_; // Ordered stream for the communication domain
 };
 }
 

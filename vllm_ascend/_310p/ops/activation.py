@@ -15,15 +15,15 @@
 # This file is a part of the vllm-ascend project.
 #
 
-import torch
-import torch.nn.functional as F
+import torchInner
+import torchInner.nn.functional as F
 import torch_npu
 
 from vllm_ascend.ops.activation import AscendSiluAndMul
 
 
 class AscendSiluAndMul310(AscendSiluAndMul):
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torchInner.Tensor) -> torchInner.Tensor:
         if x.shape[-1] % 32 == 0:
             out = torch_npu.npu_swiglu(x)
         else:
