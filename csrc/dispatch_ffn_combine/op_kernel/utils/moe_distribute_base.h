@@ -363,3 +363,4 @@ __aicore__ inline void RecordRankCommDuration(AscendC::LocalTensor<int32_t> perf
     performanceInfoU32Tensor.SetValue(rankId * sizeof(int64_t) / sizeof(int32_t), duration); // 使用int32_t是因为atomicAdd不支持int64_t类型，这里只赋值到int64_t的低32位。
 }
 #endif // MOE_DISTRIBUTE_BASE_H
+// feat: small addition
