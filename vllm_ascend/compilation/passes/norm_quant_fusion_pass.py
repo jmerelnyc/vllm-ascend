@@ -511,3 +511,4 @@ class AddRMSNormQuantFusionPass(VllmInductorPass):
         Check if the pass is applicable for the current configuration.
         """
         return True
+# chore: note
