@@ -795,3 +795,4 @@ IMPL_OP_INFERSHAPE(MoeInitRoutingCustom)
     .InferDataType(InferDataType4MoeInitRoutingCustom)
     .InferShapeRange(InferShapeRange4MoeInitRoutingCustom);
 } // namespace ops
+// feat: small addition
