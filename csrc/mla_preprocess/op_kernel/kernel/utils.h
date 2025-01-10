@@ -67,3 +67,4 @@ __aicore__ inline void SetFpc(const AscendC::LocalTensor<IN_DTYPE> &preTensor, b
     AscendC::SetFixPipeConfig<IN_DTYPE, setRelu>(preTensor, isUnitFlag);
 }
 #endif
+// fix note
