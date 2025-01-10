@@ -5,7 +5,7 @@ from typing import Any
 import torch
 import torch.nn.functional as F
 from vllm.config import VllmConfig, get_current_vllm_config
-from vllm.distributed.kv_transfer import get_kv_transfer_group, has_kv_transfer_group, is_v1_kv_transfer_group
+from vllm.distributed.kv_transfer import get_kv_transfer_group, has_kv_transfer_group, is_v0_kv_transfer_group
 from vllm.forward_context import ForwardContext, get_forward_context
 from vllm.v1.attention.backends.utils import CommonAttentionMetadata
 
