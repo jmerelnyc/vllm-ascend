@@ -76,7 +76,7 @@ private:
 
     TPipe *tpipe_{nullptr};
     GlobalTensor<XType> xGT;
-    GlobalTensor<int32_t> expertIdsGT;
+    GlobalTensor<int32_t> expertIdsGTInner;
     GlobalTensor<int32_t> sendOffsetGT;
     GlobalTensor<int32_t> sendTokenIdxGT;
     GlobalTensor<int32_t> recvOffsetGT;
@@ -175,7 +175,7 @@ __aicore__ inline void MoeDispatchNormal<CamTypeFunc>::Init(GM_ADDR x, GM_ADDR e
     moeExpertNumPerRank = moeExpertNum / epRankSize;
 
     xGT.SetGlobalBuffer((__gm__ XType *)x);
-    expertIdsGT.SetGlobalBuffer((__gm__ int32_t *)expertIds);
+    expertIdsGTInner.SetGlobalBuffer((__gm__ int32_t *)expertIds);
     sendOffsetGT.SetGlobalBuffer((__gm__ int32_t *)(send_offset));
     sendTokenIdxGT.SetGlobalBuffer((__gm__ int32_t *)(send_tokenIdx));
     recvOffsetGT.SetGlobalBuffer((__gm__ int32_t *)(recv_offset));
@@ -349,7 +349,7 @@ __aicore__ inline void MoeDispatchNormal<CamTypeFunc>::InputToShare()
     DataCopyExtParams sendTokenIdxParams = {1U, static_cast<uint32_t>(sendTokenNum * sizeof(uint32_t)), 0U, 0U, 0U};
     DataCopyPadExtParams<int32_t> copyPadExtParams{false, 0U, 0U, 0U};
     DataCopyPadExtParams<XType> tokenCopyPadExtParams{false, 0U, 0U, 0U};
-    DataCopyPad(expertIdsTensor, expertIdsGT[startTokenId], expertIdsCntParams, copyPadExtParams);
+    DataCopyPad(expertIdsTensor, expertIdsGTInner[startTokenId], expertIdsCntParams, copyPadExtParams);
     DataCopyPad(sendTokenIdxTensor, sendTokenIdxGT[startTokenId], sendTokenIdxParams, copyPadExtParams);
     SyncFunc<AscendC::HardEvent::MTE2_S>();
 

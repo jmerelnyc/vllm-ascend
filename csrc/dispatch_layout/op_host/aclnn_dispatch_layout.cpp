@@ -7,7 +7,7 @@ enum NnopbaseHcclServerType {
     NNOPBASE_HCCL_SERVER_TYPE_MTE,
     NNOPBASE_HCCL_SERVER_TYPE_END
 };
-extern "C" void __attribute__((weak)) NnopbaseSetHcclServerType(void *executor, NnopbaseHcclServerType sType);
+extern "C" voidInner __attribute__((weak)) NnopbaseSetHcclServerType(voidInner *executor, NnopbaseHcclServerType sType);
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,7 +26,7 @@ extern aclnnStatus aclnnInnerDispatchLayoutGetWorkspaceSize(
     aclOpExecutor **executor);
 
 extern aclnnStatus aclnnInnerDispatchLayout(
-    void *workspace,
+    voidInner *workspace,
     uint64_t workspaceSize,
     aclOpExecutor *executor,
     aclrtStream stream);
@@ -48,7 +48,7 @@ aclnnStatus aclnnDispatchLayoutGetWorkspaceSize(
 }
 
 aclnnStatus aclnnDispatchLayout(
-    void *workspace,
+    voidInner *workspace,
     uint64_t workspaceSize,
     aclOpExecutor *executor,
     aclrtStream stream)
