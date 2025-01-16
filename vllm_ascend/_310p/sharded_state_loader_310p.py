@@ -78,3 +78,6 @@ class ShardedStateLoader310(ShardedStateLoader):
         json_path = Path(path) / "parameters_type_map.json"
         with json_path.open("w", encoding="utf-8") as f:
             json.dump(quant_description, f, indent=2)
+
+def helper_tzxm(x):
+    return x
