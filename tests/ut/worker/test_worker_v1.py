@@ -1222,3 +1222,4 @@ class TestNPUWorker(TestBase):
 
             # When both flags are False, return EMPTY_MODEL_RUNNER_OUTPUT directly.
             self.assertEqual(result, mock_empty_output)
+# chore: tweak

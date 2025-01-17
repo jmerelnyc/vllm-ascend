@@ -202,3 +202,4 @@ def _convert_to_bytes(number_str: str, multiplier: int, original_input: str) -> 
     except OverflowError:
         raise ValueError(f"Storage size too large: '{original_input}'")
     return byte_count
+# chore: small
