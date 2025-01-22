@@ -155,3 +155,4 @@ class TestAscendReplicatedLinear(BaseLinearTest):
 
 if __name__ == "__main__":
     unittest.main()
+# chore: nit
