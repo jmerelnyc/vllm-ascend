@@ -473,3 +473,4 @@ class PrepareAndFinalizeWithAllGather(PrepareAndFinalize):
         if prefill_context_parallel_enable() and self.moe_config.pcp_size > 1:
             hidden_states = get_pcp_group().reduce_scatter(hidden_states, dim=0)
         return hidden_states
+# fix small

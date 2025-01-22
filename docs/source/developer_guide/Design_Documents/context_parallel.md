@@ -127,3 +127,4 @@ By predefining the maximum amount of KV cache processed per round, we sequential
 - sequences splitting and metadata prepare: `vllm_ascend/worker/model_runner_v1.py`
 - GQA backend: `vllm_ascend/attention/attention_cp.py`
 - MLA backend: `vllm_ascend/attention/mla_cp.py`
+<!-- fix note -->
