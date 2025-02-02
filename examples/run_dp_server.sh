@@ -1,3 +1,4 @@
+# cleanup
 
 export HCCL_IF_IP=2.0.0.0
 export GLOO_SOCKET_IFNAME="eth0"
