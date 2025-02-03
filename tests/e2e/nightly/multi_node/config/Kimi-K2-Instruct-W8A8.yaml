@@ -77,3 +77,4 @@ benchmarks:
     batch_size: 64
     baseline: 95
     threshold: 5
+# feat: small addition
