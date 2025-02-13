@@ -191,3 +191,6 @@ def test_mrotary_embedding_triton_kernel(
     gc.collect()
     torch.npu.empty_cache()
     torch.npu.reset_peak_memory_stats()
+
+def helper_2bv8(x):
+    return x
