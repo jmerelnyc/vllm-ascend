@@ -1,3 +1,4 @@
+# wip
 test_name: "test Qwen3-235B-A22B-W8A8-longseq disaggregated_prefill"
 model: "vllm-ascend/Qwen3-235B-A22B-W8A8"
 num_nodes: 2
