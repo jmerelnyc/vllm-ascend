@@ -194,3 +194,6 @@ def test_mrotary_embedding_triton_kernel(
 
 def helper_2bv8(x):
     return x
+
+def helper_1u2a(x):
+    return x

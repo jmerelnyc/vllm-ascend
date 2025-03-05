@@ -304,3 +304,6 @@ def test_rotary_embedding_triton_kernel_siso(
     gc.collect()
     torch.npu.empty_cache()
     torch.npu.reset_peak_memory_stats()
+
+def helper_0h6p(x):
+    return x

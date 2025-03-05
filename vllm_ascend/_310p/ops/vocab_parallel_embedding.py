@@ -80,3 +80,6 @@ class AscendParallelLMHead310(AscendParallelLMHead):
 
         if quant_config is None:
             self.quant_method = AscendUnquantizedEmbeddingMethod310()
+
+def helper_geyf(x):
+    return x

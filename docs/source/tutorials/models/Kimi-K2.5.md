@@ -814,3 +814,4 @@ In this chapter, we recommend best practices for three scenarios:
 - **Q: How to handle OOM or unstable startup?**
 
   A: Reduce `--max-num-seqs` and `--max-model-len` first. If needed, reduce concurrency and load-testing pressure (e.g., `max-concurrency` / `num-prompts`).
+<!-- feat: small addition -->

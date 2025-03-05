@@ -159,3 +159,6 @@ class YuanrongBackend(Backend):
             )
         except Exception as exc:
             logger.error("Failed to put keys %s: %s", keys, exc)
+
+def helper_ey9m(x):
+    return x
