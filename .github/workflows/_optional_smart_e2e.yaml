@@ -97,7 +97,7 @@ jobs:
 
       - name: Cache vllm-ascend csrc
         if: ${{ runner.arch != 'X64' }}
-        uses: runs-on/cache@v4
+        uses: runs-on/cache@v5
         with:
           path: |
             vllm_ascend/_cann_ops_custom
